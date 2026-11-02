@@ -42,27 +42,6 @@ The objective is to identify potential transaction errors and unusual transactio
 14. Display the audit summary.
 15. Stop the program.
 
-## 3. Flowchart
-
-[Using deduplication for eventually consistent transactions | InfoWorld](https://images.openai.com/static-rsc-4/G9PxOyXKMn3q362edhMtCtMCXo692PUoFl0juQraoUGjVAjW_61iJXvVb3gqt2a_zD1GjGhs7Ed0Ri88fJGx5_8VJoNqphNbJWpzLQMFjkt82gaITfsYjl917t070-Vm7YkPYHINKPiYgGmWe5q9Sal8T_IYowfGKj5IPmutzLk?purpose=inline)
-
-[infoworld.com](https://www.infoworld.com/article/2337734/using-deduplication-for-eventually-consistent-transactions.html?utm_source=chatgpt.com)
-
-Flowchart explanation:
-
-- Start by accepting transaction details.
-- Store transaction records in tuple format.
-- Check whether transaction IDs are duplicated.
-- Verify that transaction amounts are positive.
-- Identify three or more consecutive withdrawals.
-- Display the audit report and summary.
-- Stop the program.
-
-## 4. Python Source Code
-
-```
-sequence = []for transaction in transactions:    if transaction[2] == "WITHDRAWAL":        count += 1        sequence.append(transaction)        if count == 3:            suspicious.append(sequence.copy())    else:        count = 0        sequence = []# Display transaction recordsprint("\n--- TRANSACTION RECORDS ---")for transaction in transactions:    print(transaction)# Display duplicate IDsprint("\n--- DUPLICATE TRANSACTION IDs ---")if duplicates:    for tid in duplicates:        print(tid)else:    print("No duplicate IDs found")# Display invalid transactionsprint("\n--- INVALID TRANSACTIONS ---")if invalid_amounts:    for transaction in invalid_amounts:        print(transaction)else:    print("No invalid amounts found")# Display suspicious sequencesprint("\n--- SUSPICIOUS SEQUENCES ---")if suspicious:    for seq in suspicious:        print("Consecutive withdrawals detected:")        for transaction in seq:            print(transaction)else:    print("No suspicious sequences found")# Display audit summaryprint("\n--- AUDIT SUMMARY ---")print("Total transactions:", n)print("Duplicate IDs:", len(duplicates))print("Invalid transactions:", len(invalid_amounts))print("Suspicious sequences:", len(suspicious))print("\nTransaction audit completed.")
-```
 
 ## 5. Sample Input
 
